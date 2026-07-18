@@ -70,7 +70,7 @@
         <div class="space-y-6 max-w-md animate-bounce flex flex-col items-center">
             <span class="text-6xl sm:text-7xl block">🏆</span>
             <h1 class="text-2xl sm:text-4xl font-black tracking-tighter text-yellow-400 italic uppercase">
-                MUNDIAL 2026<br><span class="text-white text-xl sm:text-2xl break-words">FELIZ CUMPLEAÑOS SALVADOR</span>
+                GRAN FINAL: ESPAÑA VS ARGENTINA<br><span class="text-white text-xl sm:text-2xl break-words">FELIZ CUMPLEAÑOS SALVADOR</span>
             </h1>
         </div>
         <button onclick="startMatchBroadcast()" class="mt-12 bg-gradient-to-r from-red-600 via-yellow-500 to-red-600 text-white font-black text-xl px-10 py-5 rounded-full shadow-[0_0_30px_rgba(239,68,68,0.5)] border-2 border-white hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer tracking-widest uppercase">
@@ -104,7 +104,7 @@
 
             <div class="bg-slate-900/95 border border-slate-700/50 rounded-lg px-4 py-1.5 flex items-center space-x-4 shadow-lg backdrop-blur-md">
                 <div class="flex items-center space-x-1.5">
-                    <span class="text-lg"></span>
+                    <span class="text-lg">🇪🇸</span>
                     <span class="font-black text-xs tracking-wide text-white">ESP</span>
                     <span id="scoreESP" class="bg-red-700 text-white font-black text-base px-2 rounded transition-all duration-300">0</span>
                 </div>
@@ -115,7 +115,7 @@
                 <div class="flex items-center space-x-1.5">
                     <span id="scoreARG" class="bg-cyan-500 text-white font-black text-base px-2 rounded transition-all duration-300">0</span>
                     <span class="font-black text-xs tracking-wide text-white">ARG</span>
-                    <span class="text-lg"></span>
+                    <span class="text-lg">🇦🇷</span>
                 </div>
             </div>
         </div>
@@ -170,7 +170,7 @@
                 </div>
             </div>
 
-            <div class="w-full rounded-xl overflow-hidden border-2 border-yellow-500/50 shadow-2xl bg-slate-900 overflow-hidden">
+            <div class="w-full rounded-xl overflow-hidden border-2 border-yellow-500/50 shadow-2xl bg-slate-900">
                 <div class="relative w-full aspect-[16/6.5]">
                     <iframe 
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.621213009581!2d-76.9535749!3d-12.0695627!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f1.1!3m3!1m2!1s0x9105c65089f21f7b%3A0x6fb837c73ffec900!2sAv.%20Separadora%20Industrial%202072%2C%20Ate%2015022!5e0!3m2!1ses-419!2spe!4v1719260000000!5m2!1ses-419!2spe" 
@@ -345,7 +345,7 @@
 
         function animateLiveScore() {
             const timeEl = document.getElementById('matchTime');
-            const scorePOR = document.getElementById('scorePOR'); 
+            const scoreESP = document.getElementById('scoreESP'); 
             const scoreARG = document.getElementById('scoreARG');
             let currentMinute = 0;
 
@@ -358,7 +358,7 @@
                 timeEl.innerText = `${currentMinute}'`;
 
                 if (currentMinute >= 18 && currentMinute < 55) {
-                    scorePOR.innerText = '1';
+                    scoreESP.innerText = '1';
                 }
                 if (currentMinute >= 55 && currentMinute < 85) {
                     scoreARG.innerText = '1';
