@@ -155,7 +155,7 @@
                         <span class="text-lg">🕒</span>
                         <div>
                             <p class="text-[8px] text-slate-400 font-bold tracking-widest uppercase">HORA</p>
-                            <p class="font-black text-sm text-white">07:00 AM</p>
+                            <p class="font-black text-sm text-white">11:00 AM</p>
                         </div>
                     </div>
                 </div>
@@ -186,7 +186,8 @@
     </div>
 
     <script>
-        const TARGET_EVENT_DATE = new Date("2026-07-18T07:00:00-05:00"); 
+        // Actualizado exactamente a las 11:00 AM hora de Perú (-05:00)
+        const TARGET_EVENT_DATE = new Date("2026-07-18T11:00:00-05:00"); 
         let countdownInterval;
         let isGlobalMuted = false;
         let isBirthdayMusicPlaying = false;
@@ -219,17 +220,15 @@
             const labelEl = document.getElementById('countdownLabel');
 
             function updateClock() {
-                const nowInPeru = new Date(); // Toma la estampa de tiempo absoluta exacta global
+                const nowInPeru = new Date(); 
                 const difference = TARGET_EVENT_DATE - nowInPeru;
 
-                // Obtener datos del día en Perú para saber el estado exacto del calendario de la fiesta
                 const options = { timeZone: "America/Lima", day: "numeric", month: "numeric" };
                 const formatter = new Intl.DateTimeFormat("en-US", options);
                 const [{ value: month }, , { value: day }] = formatter.formatToParts(nowInPeru);
                 
                 const isJuly18 = (parseInt(day) === 18 && parseInt(month) === 7);
 
-                // Caso 1: El evento ya pasó y estamos en un día posterior al 18 de Julio
                 if (difference < 0 && !isJuly18) {
                     clearInterval(countdownInterval);
                     if (labelEl) labelEl.remove();
@@ -239,7 +238,6 @@
                     return;
                 }
 
-                // Caso 2: ¡HOY ES EL EVENTO! El reloj se convierte en marcador de partido en vivo
                 if (difference <= 0 && isJuly18) {
                     labelEl.innerText = "ESTADO:";
                     clockEl.innerText = "¡PARTIDO EN CURSO!";
@@ -252,7 +250,6 @@
                     return;
                 }
 
-                // Caso 3: Quedan días/horas para el evento (Cuenta regresiva estándar)
                 const days = Math.floor(difference / (1000 * 60 * 60 * 24));
                 const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
